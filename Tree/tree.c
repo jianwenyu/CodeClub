@@ -11,11 +11,18 @@ struct BstNode *getNewNode(int data)
     return root;
 }
 
+/* Find the minimum child */
 struct BstNode *findMin(struct BstNode *root)
 {
-    while (root != NULL)
-        root = root->left;
-    return root;
+    if (root != NULL){
+        while (root->left != NULL){
+            root = root->left; // smaller value is always on the left side
+        }
+        return root;
+    }
+    else{
+        return NULL;
+    }
 }
 
 struct BstNode *deleteNode(struct BstNode *root, int data)
@@ -53,9 +60,14 @@ struct BstNode *deleteNode(struct BstNode *root, int data)
         // Case 3, two child
         else
         {
+            printf("dot map is coming\n");
             struct BstNode *temp = findMin(root->right);
+            printf("dot map is coming2\n");
+            printf("%d\n", temp->data);
             root->data = temp->data;
+            printf("dot map is coming3\n");
             root->right = deleteNode(root->right, data);
+            printf("dot map is coming4\n");
         }
     }
     return root;
