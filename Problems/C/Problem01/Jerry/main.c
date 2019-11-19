@@ -18,7 +18,7 @@ return [0, 1].
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 
 int main(int argc, char **argv){
-    int a[] = {2,7,11,15};
+    int a[] = {11,2,15,7};
     int *returnSize =NULL;
     returnSize = twoSum(a,4, 9,returnSize);
     printf("%d %d\n",returnSize[0],returnSize[1]);
@@ -38,7 +38,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize){
         if(nums[i]>target){
             continue;
         }else if(nums[i]==target){
-            for(j=0;j<numsSize;j++){
+            for(j=i;j<numsSize;j++){
                 if(nums[j]==0){
                     returnSize[0]=i;
                     returnSize[1]=j;
@@ -46,7 +46,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize){
                 }
             }
         }else{
-            for(j=0;j<numsSize;j++){
+            for(j=i;j<numsSize;j++){
                 if(nums[j]==(target-nums[i])){
                     returnSize[0]=i;
                     returnSize[1]=j;
