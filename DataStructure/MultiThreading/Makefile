@@ -17,11 +17,8 @@ thread:$(OBJ_DIR)/thread.o
 	$(cc) -o $(DEBUG_DIR)/thread $(OBJ_DIR)/thread.o $(FLAG)
 
 
-$(OBJ_DIR)/thread2.o: $(SRC_DIR)/thread2.c
-	$(cc) -o $(OBJ_DIR)/thread2.o -c $(SRC_DIR)/thread2.c  
-
-$(OBJ_DIR)/thread.o: $(SRC_DIR)/thread.c
-	$(cc) -o $(OBJ_DIR)/thread.o -c $(SRC_DIR)/thread.c  
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(cc) -c -o $@  $< $(FLAG)
 
 .PHONY: clean release
 
