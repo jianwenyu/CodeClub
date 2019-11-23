@@ -20,7 +20,7 @@ thread:$(OBJ_DIR)/thread.o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(cc) -c -o $@  $< $(FLAG)
 
-.PHONY: clean release
+.PHONY: clean release folder
 
 clean:
 	rm $(OBJ_DIR)/*.o $(DEBUG_DIR)/*
@@ -28,3 +28,6 @@ clean:
 release:
 	cp -f $(DEBUG_DIR)/thread $(RELEASE_DIR)/thread
 	cp -f $(DEBUG_DIR)/thread2 $(RELEASE_DIR)/thread2
+
+folder:
+	bash createFolder.sh
