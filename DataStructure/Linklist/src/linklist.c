@@ -108,3 +108,13 @@ void revertList(struct node_t **head)
     *head = previous;
     printf("Revert finish\n");
 }
+
+void deleteList(struct node_t **head){
+    struct node_t *temp = *head;
+    while((*head)!=NULL){
+        temp = (*head);
+        (*head)=(*head)->next;
+        free(temp);
+    }
+
+}

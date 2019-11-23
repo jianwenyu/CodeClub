@@ -19,6 +19,8 @@ int main(int argc, char **argv)
     revertList(&head);
     printf("There are %d elements in the link list\n", countNum(&head));
     display(&head);
-
+    deleteList(&head);
+    printf("There are %d elements in the link list\n", countNum(&head));
+    display(&head);
     return 0;
 }
