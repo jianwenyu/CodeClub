@@ -78,3 +78,33 @@ void display(struct node_t **head)
         printf("The link list is empty\n");
     }
 }
+
+int countNum(struct node_t **head)
+{
+    struct node_t *current = *head;
+    int n = 0;
+    while (current != 0)
+    {
+        n++;
+        current = current->next;
+    }
+    return n;
+}
+
+void revertList(struct node_t **head)
+{
+    struct node_t *current = *head;
+    struct node_t *previous = NULL;
+    struct node_t *temp = NULL;
+    while (current!= NULL)
+    {
+        printf("revert:%d\n",current->data);
+        temp = current->next;
+        current->next = previous;
+        previous= current;
+        current = temp;
+        
+    }
+    *head = previous;
+    printf("Revert finish\n");
+}
