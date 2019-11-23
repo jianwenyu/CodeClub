@@ -10,16 +10,14 @@ obj= linklist.o main.o
 
 all: main
 
-
+# Compile specific target
 main:$(OBJ_DIR)/linklist.o $(OBJ_DIR)/main.o
 	$(cc) -o $(DEBUG_DIR)/main $(OBJ_DIR)/linklist.o $(OBJ_DIR)/main.o $(FLAG) -I./src
 
+# Compile general source to obj
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(cc) -c -o $@  $< $(FLAG)
 
-$(OBJ_DIR)/linklist.o: $(SRC_DIR)/linklist.c
-	$(cc) -o $(OBJ_DIR)/linklist.o -c $(SRC_DIR)/linklist.c  
-
-$(OBJ_DIR)/main.o: main.c
-	$(cc) -o $(OBJ_DIR)/main.o -c main.c  -I./src
 
 .PHONY: clean release
 
