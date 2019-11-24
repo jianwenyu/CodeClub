@@ -7,13 +7,13 @@ struct stack_t *createStack(unsigned int num)
     struct stack_t *stack = (struct stack_t *)malloc(sizeof(struct stack_t));
     stack->capacity = num;
     stack->array = (int *)malloc(stack->capacity * sizeof(int));
-    stack->top = 0;
+    stack->top = -1;
     return stack;
 }
 void deleteStack(struct stack_t *stack)
 {
     stack->capacity = 0;
-    stack->top = 0;
+    stack->top = -1;
     free(stack->array);
     free(stack);
 }
@@ -32,7 +32,7 @@ int isFull(struct stack_t *stack)
 
 int isEmpty(struct stack_t *stack)
 {
-    if (stack->top == 0)
+    if (stack->top == -1)
     {
         return 1;
     }
@@ -67,16 +67,15 @@ int pop(struct stack_t *stack)
     }
 }
 
-int peek(struct stack_t *stack)
+void peek(struct stack_t *stack)
 {
     if (isEmpty(stack))
     {
         printf("Stack is empty\n");
-        return 0;
     }
     else
     {
-        return stack->array[stack->top];
+        printf("current element:%d\n",stack->array[stack->top]);
     }
 }
 
@@ -85,21 +84,22 @@ int main(int argc, char **argv)
     struct stack_t *stack = createStack(10);
 
     push(stack, 1);
-    printf("%d\n", peek(stack));
+    peek(stack);
     push(stack, 2);
-    printf("%d\n", peek(stack));
+    peek(stack);
     push(stack, 3);
-    printf("%d\n", peek(stack));
+    peek(stack);
     push(stack, 4);
-    printf("%d\n", peek(stack));
+    peek(stack);
     push(stack, 5);
-    printf("%d\n", peek(stack));
+    peek(stack);
     printf("%d\n", pop(stack));
     printf("%d\n", pop(stack));
     printf("%d\n", pop(stack));
     printf("%d\n", pop(stack));
     printf("%d\n", pop(stack));
-    printf("%d\n", peek(stack));
+    printf("%d\n", pop(stack));
+    peek(stack);
     deleteStack(stack);
     return 0;
 }
