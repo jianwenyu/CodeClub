@@ -1,0 +1,14 @@
+A frog jump on a stairs. Maximum jump 2 steps in a single jump. 
+
+1. Jump to step 1, there is 1 way to jump.
+2. Jump to step 2, there is 2 way to jump:
+    -  jump to 1, then jump to 2.
+ or -  jump to 2 directly.
+
+question:
+
+How many ways to jump on a stair n?
+
+int f(int n){
+    
+}
