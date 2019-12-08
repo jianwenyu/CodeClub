@@ -7,7 +7,7 @@ FLAG=
 all: bsttree
 
 bsttree: main.o tree.o
-	$(cc) -o $(DEBUG_DIR)/bsttree main.o tree.o $(FLAG) -g
+	$(cc) -o $(DEBUG_DIR)/bsttree main.o tree.o $(FLAG)
 
 tree: tree.c
 	$(cc) -c tree.c $(FLAG)

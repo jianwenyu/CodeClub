@@ -17,7 +17,7 @@ int main(int argc, char** argv){
 	root = insertNode(root,3); 
     root = insertNode(root,4); 
 	root = insertNode(root,1); 
-    root = insertNode(root,11);
+    root = insertNode(root,9);
 
 	displayNode(root);
 	printf("\n");
