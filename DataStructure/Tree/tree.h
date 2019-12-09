@@ -16,5 +16,6 @@ struct BstNode *deleteNode2(struct BstNode* root, int key);
 struct BstNode *insertNode(struct BstNode *root, int data);
 unsigned int searchNode(struct BstNode *root, int data);
 void displayNode(struct BstNode *root);
+void invertNode(struct BstNode *root);
 
 #endif

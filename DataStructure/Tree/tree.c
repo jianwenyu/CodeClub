@@ -117,3 +117,15 @@ void displayNode(struct BstNode *root)
         displayNode(root->right);
     }
 }
+
+void invertNode(struct BstNode *root)
+{
+    if (root != NULL)
+    {
+        invertNode(root->right);
+        invertNode(root->left);
+        struct BstNode *temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+    }
+}

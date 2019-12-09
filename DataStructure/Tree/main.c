@@ -17,13 +17,13 @@ int main(int argc, char** argv){
 	root = insertNode(root,3); 
     root = insertNode(root,4); 
 	root = insertNode(root,1); 
-    root = insertNode(root,9);
+    root = insertNode(root,11);
 
 	displayNode(root);
 	printf("\n");
 	// Deleting node with value 5, change this value to test other cases
-	root = deleteNode(root,5);
-
+	//root = deleteNode(root,5);
+	invertNode(root);
 	//Print Nodes in Inorder
 	displayNode(root);
 	printf("\n");
