@@ -129,3 +129,27 @@ void invertNode(struct BstNode *root)
         root->right = temp;
     }
 }
+
+int isSame(struct BstNode *root1,struct BstNode *root2)
+{
+    if(root1!=NULL && root2!=NULL){
+        if(!isSame(root1->left,root2->left)){
+            return 0;
+        }
+        if(!isSame(root1->right,root2->right)){
+            return 0;
+        }
+        if(root1->data==root2->data){
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }else if(root1!=NULL){
+        return 0;
+    }else if(root2!=NULL){
+        return 0;
+    }else{
+        return 1;
+    }
+}
