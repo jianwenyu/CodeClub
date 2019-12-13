@@ -1,0 +1,128 @@
+
+#include<stdio.h>
+
+#define SIZE 50000
+
+int hash(int key);
+void insert(int ind, int* val);
+int search(int val);
+int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+
+typedef struct node
+{
+    int* value;
+    int index;
+    struct node* next;
+}
+node;
+
+node* first[SIZE] = {NULL};
+
+void main(){
+    
+    int test[] = {3,2,4};
+    int numsSize=3;
+    int target=6;
+    int returnSize[2]; 
+    int *result;
+    
+result= twoSum(test, numsSize, target, returnSize);
+    printf(" [%d, %d]\n",  result[0], result[1]);
+  free(result);
+}
+
+int hash(int key)
+{
+    int r = key % SIZE;
+    
+    return r < 0 ? r + SIZE : r;
+}
+   
+void insert(int ind, int* val)
+{
+    int key=hash(*val);
+   
+    // try to instantiate node to insert value and index
+    node* newptr = malloc(sizeof(node));
+    if (newptr == NULL)
+    {
+        return;
+    }
+    
+    // make a new pointer
+    newptr->value=val;
+    newptr->index=ind+1;
+    newptr->next = NULL;   
+
+   //check for empty list
+    if (first[key] == NULL)
+    {
+       first[key] = newptr;
+                
+ 
+    }
+    // check for insertion at tail
+    else
+    {
+        node* predptr = first[key];
+        while (true)
+        {
+            // insert at tail
+            if (predptr->next == NULL)
+            {
+                predptr->next = newptr;
+                free(newptr);
+                break;
+            }
+
+            // update pointer
+            predptr = predptr->next;
+            
+        }
+    }
+}
+
+
+int search(int val)
+{
+    int key=hash(val);
+    if( first[key]==NULL)
+    {  
+        return NULL;
+    } 
+    else{
+        return first[key]->index;
+    }
+    return NULL;
+        }
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize)
+{
+
+    int i, *ans,v;
+    int key;
+    ans = (int*)malloc(sizeof(int)*2);
+   *returnSize = 2;
+    // insert the name in table with hashed value
+    
+
+    
+    for(int i=0; i<numsSize; i++) 
+    {
+        v = search(target-nums[i]); 
+ 
+        if(v) 
+        {
+            ans[0] = v-1;
+            ans[1] = i;
+             return ans;        
+       }
+        insert(i,&nums[i]);    
+
+    }
+    out:
+    *returnSize = 0;
+    return NULL;
+}
