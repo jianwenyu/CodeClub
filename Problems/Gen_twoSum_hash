@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 
 #define SIZE 50000
@@ -20,8 +19,8 @@ node* first[SIZE] = {NULL};
 
 void main(){
     
-    int test[] = {3,2,4};
-    int numsSize=3;
+    int test[] = {1,10,4,3,3};
+    int numsSize=(int)( sizeof(test) / sizeof(test[0]));
     int target=6;
     int returnSize[2]; 
     int *result;
@@ -41,7 +40,8 @@ int hash(int key)
 void insert(int ind, int* val)
 {
     int key=hash(*val);
-   
+printf(" begin of:value %d index %d\n",*val,ind);
+
     // try to instantiate node to insert value and index
     node* newptr = malloc(sizeof(node));
     if (newptr == NULL)
@@ -51,19 +51,21 @@ void insert(int ind, int* val)
     
     // make a new pointer
     newptr->value=val;
-    newptr->index=ind+1;
+    newptr->index=ind;
     newptr->next = NULL;   
+printf(" middle of:value %d index %d\n",*(newptr->value),newptr->index);
 
    //check for empty list
     if (first[key] == NULL)
     {
-       first[key] = newptr;
-                
+       first[key] = newptr;             
  
     }
     // check for insertion at tail
     else
     {
+       // printf(" in else");
+
         node* predptr = first[key];
         while (true)
         {
@@ -80,8 +82,10 @@ void insert(int ind, int* val)
             
         }
     }
-}
+    
+     printf(" end: value %d index %d\n",*(first[key]->value),first[key]->index);
 
+}
 
 int search(int val)
 {
@@ -91,6 +95,8 @@ int search(int val)
         return NULL;
     } 
     else{
+                printf("in search index %d\n",first[key]->index);
+
         return first[key]->index;
     }
     return NULL;
@@ -119,7 +125,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
             ans[1] = i;
              return ans;        
        }
-        insert(i,&nums[i]);    
+        insert(i+1,&nums[i]);    
 
     }
     out:
